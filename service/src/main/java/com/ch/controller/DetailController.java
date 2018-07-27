@@ -23,6 +23,7 @@ public class DetailController {
         return detailService.getDetail(passId[0], passId[1]);
     }
 
+    //获取课程章节信息
     @PostMapping("/getChapterSection")
     public CourseChapter getChapterSection(@RequestBody int id) {
         return this.detailService.getCourseChapter(id);

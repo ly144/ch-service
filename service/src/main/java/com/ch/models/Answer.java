@@ -1,14 +1,14 @@
 package com.ch.models;
 
 public class Answer {
-    private String img;
-    private String name;
-    private String content;
-    private String time;
-    private int agreeNum;
-    private int opposeNum;
-    private int storey;
-    private int answerNum;
+    private String img;   // 回答者用户头像
+    private String name;  // 回答者姓名
+    private String content;  // 回答内容
+    private String time;    // 回答时间
+    private int agreeNum;  // 赞同数
+    private int opposeNum;  // 反对数
+    private int storey;  // 楼层数
+    private int answerNum;  // 回复数
 
     public Answer() {
     }
