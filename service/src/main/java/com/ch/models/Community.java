@@ -6,6 +6,8 @@ public class Community {
     private int id;  //获取提问者id
     private String img; // 分类头像
     private String classify; // 类型
+    private int userId; // 提问者id
+    private int typeId; // 类型id
     private String quesImg;  //获取提问者头像
     private String quesName;  //获取提问者姓名
     private String title; // 题目
@@ -19,10 +21,12 @@ public class Community {
     public Community() {
     }
 
-    public Community(int id, String img, String classify, String quesImg, String quesName, String title, String content, Answer[] answer, int answerNum, int lookNum, String time, int attentionNum) {
+    public Community(int id, String img, String classify, int userId, int typeId, String quesImg, String quesName, String title, String content, Answer[] answer, int answerNum, int lookNum, String time, int attentionNum) {
         this.id = id;
         this.img = img;
         this.classify = classify;
+        this.userId = userId;
+        this.typeId = typeId;
         this.quesImg = quesImg;
         this.quesName = quesName;
         this.title = title;
@@ -40,6 +44,8 @@ public class Community {
                 "id=" + id +
                 ", img='" + img + '\'' +
                 ", classify='" + classify + '\'' +
+                ", userId=" + userId +
+                ", typeId=" + typeId +
                 ", quesImg='" + quesImg + '\'' +
                 ", quesName='" + quesName + '\'' +
                 ", title='" + title + '\'' +
@@ -50,30 +56,6 @@ public class Community {
                 ", time='" + time + '\'' +
                 ", attentionNum=" + attentionNum +
                 '}';
-    }
-
-    public String getQuesImg() {
-        return quesImg;
-    }
-
-    public void setQuesImg(String quesImg) {
-        this.quesImg = quesImg;
-    }
-
-    public String getQuesName() {
-        return quesName;
-    }
-
-    public void setQuesName(String quesName) {
-        this.quesName = quesName;
-    }
-
-    public int getAttentionNum() {
-        return attentionNum;
-    }
-
-    public void setAttentionNum(int attentionNum) {
-        this.attentionNum = attentionNum;
     }
 
     public int getId() {
@@ -98,6 +80,38 @@ public class Community {
 
     public void setClassify(String classify) {
         this.classify = classify;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(int typeId) {
+        this.typeId = typeId;
+    }
+
+    public String getQuesImg() {
+        return quesImg;
+    }
+
+    public void setQuesImg(String quesImg) {
+        this.quesImg = quesImg;
+    }
+
+    public String getQuesName() {
+        return quesName;
+    }
+
+    public void setQuesName(String quesName) {
+        this.quesName = quesName;
     }
 
     public String getTitle() {
@@ -146,5 +160,13 @@ public class Community {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public int getAttentionNum() {
+        return attentionNum;
+    }
+
+    public void setAttentionNum(int attentionNum) {
+        this.attentionNum = attentionNum;
     }
 }

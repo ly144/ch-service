@@ -3,7 +3,9 @@ package com.ch.dao;
 import com.ch.models.Answer;
 import com.ch.models.Community;
 import com.ch.models.User;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Component;
 
@@ -30,4 +32,12 @@ public interface CommunityMapper {
     // 获取猿问问题详细页面回答内容
     @Select("select answer.*,user.name,user.picture img from answer,user where answer.communityId=#{id} and answer.userId=user.id")
     Answer[] getApeAnswer(int id);
+
+    // ch-ape-quiz获取分类信息
+    @Select("select type.name from type where type.id!=0")
+    String[] getClassify();
+
+    // ch-ape-quiz插入提问信息
+    @Insert("insert into community(userId,typeId,title,content,time) values (#{quiz.userId},#{quiz.typeId},#{quiz.title},#{quiz.content},#{quiz.time} )")
+    int setCommunity(@Param("quiz")Community quiz);
 }

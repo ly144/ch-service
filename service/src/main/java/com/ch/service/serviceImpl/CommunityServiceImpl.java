@@ -39,4 +39,16 @@ public class CommunityServiceImpl implements CommunityService{
         us.setAnswer(a);
         return us;
     }
+
+    // ch-ape-quiz获取分类信息
+    @Override
+    public String[] getClassify(){
+        return this.communityMapper.getClassify();
+    }
+
+    // ch-ape-quiz插入提问信息
+    @Override
+    public int setCommunity(Community quiz){
+        return this.communityMapper.setCommunity(quiz);
+    }
 }
