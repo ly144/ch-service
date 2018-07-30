@@ -2,6 +2,7 @@ package com.ch.models;
 
 public class Sections {
     private int id;         //节ID
+    private int chapterId; // 章id
     private int section;    //第几节
     private String name;   // 节名
     private String time;            // 节时长
@@ -14,8 +15,9 @@ public class Sections {
     public Sections() {
     }
 
-    public Sections(int id, int section, String name, String time, String learnedSection, int learnedSections, String learningHalf, int learningHalfs, int newLearn) {
+    public Sections(int id, int chapterId, int section, String name, String time, String learnedSection, int learnedSections, String learningHalf, int learningHalfs, int newLearn) {
         this.id = id;
+        this.chapterId = chapterId;
         this.section = section;
         this.name = name;
         this.time = time;
@@ -24,6 +26,14 @@ public class Sections {
         this.learningHalf = learningHalf;
         this.learningHalfs = learningHalfs;
         this.newLearn = newLearn;
+    }
+
+    public int getChapterId() {
+        return chapterId;
+    }
+
+    public void setChapterId(int chapterId) {
+        this.chapterId = chapterId;
     }
 
     public int getSection() {

@@ -2,6 +2,7 @@ package com.ch.models;
 
 public class Chapter {
     private int id;            // 章ID
+    private int courseId; // 课程ID
     private int chapter;       // 第几章
     private String name ;      // 章节名
     private String summary;    // 章节简介
@@ -10,8 +11,9 @@ public class Chapter {
     public Chapter() {
     }
 
-    public Chapter(int id, int chapter, String name, String summary, Sections[] sections) {
+    public Chapter(int id, int courseId, int chapter, String name, String summary, Sections[] sections) {
         this.id = id;
+        this.courseId = courseId;
         this.chapter = chapter;
         this.name = name;
         this.summary = summary;
@@ -24,6 +26,14 @@ public class Chapter {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
     }
 
     public int getChapter() {

@@ -1,15 +1,55 @@
 package com.ch.models;
 
 public class CourseChapter {
+    private int id; // 课程id
+    private String name; // 课程名称
+    private String difficulty; // 课程难度
+    private String uploadTime;
     private String intro;          //课程简介
     private Chapter[] chapters;     //第几章
 
     public CourseChapter() {
     }
 
-    public CourseChapter(String intro, Chapter[] chapters) {
+    public CourseChapter(int id, String name, String difficulty, String uploadTime, String intro, Chapter[] chapters) {
+        this.id = id;
+        this.name = name;
+        this.difficulty = difficulty;
+        this.uploadTime = uploadTime;
         this.intro = intro;
         this.chapters = chapters;
+    }
+
+    public String getUploadTime() {
+        return uploadTime;
+    }
+
+    public void setUploadTime(String uploadTime) {
+        this.uploadTime = uploadTime;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(String difficulty) {
+        this.difficulty = difficulty;
     }
 
     public String getIntro() {

@@ -5,6 +5,7 @@ public class Course {
     // 获得首页推荐课程详细信息
     private int id;              // 课程编号
     private int typeId;          // 类型编号
+    private String img;          // 课程图像
     private String name;         // 课程名称
     private int userId;          // 教师ID
     private String shortIntro;   // 课程简短介绍
@@ -12,7 +13,6 @@ public class Course {
     private String difficulty;   // 课程难度
     private String time;         // 课程时长
     private int people;          // 学习人数
-    private String img;          // 课程图像
     private String uploadTime;   // 课程上传时间
     private String know;         // 课程须知
     private String learnWhat;    // 学到什么

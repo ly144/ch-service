@@ -1,10 +1,7 @@
 package com.ch.service.serviceImpl;
 
 import com.ch.dao.DetailMapper;
-import com.ch.models.Chapter;
-import com.ch.models.CourseChapter;
-import com.ch.models.Detail;
-import com.ch.models.Sections;
+import com.ch.models.*;
 import com.ch.service.DetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -67,6 +64,41 @@ public class DetailServiceImpl implements DetailService{
             }
         }
         return cc;
+    }
+
+    /**
+     * 获取课程的问答
+     * @param id
+     * @return
+     */
+    @Override
+    public Question[] getCourseQuestion(int id) {
+        Question[] qs = this.detailMapper.getQuestion(id);
+        for (Question q : qs) {
+            Answer[] a = this.detailMapper.getAnswer(q.getId());
+            q.setAnswer(a);
+        }
+        return qs;
+    }
+
+    /**
+     * 获取课程的评论
+     * @param id
+     * @return
+     */
+    @Override
+    public Comment[] getCourseComment(int id) {
+        return this.detailMapper.getCourseComment(id);
+    }
+
+    /**
+     * 获取课程的笔记
+     * @param id
+     * @return
+     */
+    @Override
+    public CourseNotes[] getCourseNotes(int id) {
+        return this.detailMapper.getCourseNotes(id);
     }
 
 }

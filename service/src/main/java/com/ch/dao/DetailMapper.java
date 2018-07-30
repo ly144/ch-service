@@ -1,9 +1,6 @@
 package com.ch.dao;
 
-import com.ch.models.Chapter;
-import com.ch.models.CourseChapter;
-import com.ch.models.Detail;
-import com.ch.models.Sections;
+import com.ch.models.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -19,20 +16,34 @@ public interface DetailMapper {
             "course.typeId=type.id and type.directionId=direction.id")
     Detail getDetail(@Param("courseId") int courseId, @Param("userId") int userId);
 
+
     // 获得课程详细页面子页面的课程章节页面的章信息和节信息
     // 1.获得课程中的简介
     @Select("select course.intro from course where course.id=#{id}")
     CourseChapter getIntro(int id);
-
     // 2.获得章信息
     @Select("select chapters.* from chapters where chapters.courseId=#{id}")
     Chapter[] getChapters(int id);
-
     // 3.获得节信息
     @Select("select sections.* from sections where sections.chapterId=#{id}")
     Sections[] getSections(int id);
-
     // 4.获得已学，学一半和新学的节信息
     @Select("select usercourse.learnedSection,usercourse.learningHalf,usercourse.newLearn from usercourse where usercourse.courseId=#{id}")
     Sections getSectionLearn(int id);
+
+
+    // 获取课程的问题
+    @Select("select u.picture img,q.*,ch.chapter,s.section,s.name sectionName from question q,user u,sections s,chapters ch,course c where q.userId=u.id and q.sectionId=s.id and s.chapterId=ch.id and ch.courseId=c.id and c.id=#{id}")
+    Question[] getQuestion(int id);
+    // 获取课程的回答
+    @Select("select u.picture img,u.name,a.* from user u,answer a where a.userId=u.id and isEyes=1 and a.questionId=#{id}")
+    Answer[] getAnswer(int id);
+
+    // 获取课程的评论
+    @Select("select u.picture img,u.name,ch.chapter,s.section,s.name sectionName,d.* from user u,sections s,chapters ch,course c,discuss d where d.userId=u.id and d.sectionId=s.id and s.chapterId=ch.id and ch.courseId=c.id and c.id=#{id}")
+    Comment[] getCourseComment(int id);
+
+    // 获取课程的笔记
+    @Select("select u.picture img,u.name,ch.chapter,s.section,s.name sectionName,n.* from notes n,sections s,chapters ch,user u,course c where u.id=n.userId and s.chapterId=ch.id and n.sectionId=s.id and ch.courseId=c.id and c.id=#{id}")
+    CourseNotes[] getCourseNotes(int id);
 }

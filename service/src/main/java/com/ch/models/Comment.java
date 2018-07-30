@@ -4,16 +4,22 @@ public class Comment {
     private String img;
     private String name;
     private String content;
+    private int chapter;
+    private int section;
+    private String sectionName;
     private int agreeNum;
     private String time;
 
     public Comment() {
     }
 
-    public Comment(String img, String name, String content, int agreeNum, String time) {
+    public Comment(String img, String name, String content, int chapter, int section, String sectionName, int agreeNum, String time) {
         this.img = img;
         this.name = name;
         this.content = content;
+        this.chapter = chapter;
+        this.section = section;
+        this.sectionName = sectionName;
         this.agreeNum = agreeNum;
         this.time = time;
     }
@@ -40,6 +46,30 @@ public class Comment {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public int getChapter() {
+        return chapter;
+    }
+
+    public void setChapter(int chapter) {
+        this.chapter = chapter;
+    }
+
+    public int getSection() {
+        return section;
+    }
+
+    public void setSection(int section) {
+        this.section = section;
+    }
+
+    public String getSectionName() {
+        return sectionName;
+    }
+
+    public void setSectionName(String sectionName) {
+        this.sectionName = sectionName;
     }
 
     public int getAgreeNum() {

@@ -12,13 +12,13 @@ public class SelectionController {
     @Autowired
     SelectionService selectionService;
 
-//    获得方向
+    // 获得方向
     @GetMapping("/getDirection")
     public String[] getDirection() {
         return this.selectionService.getDirection();
     }
 
-//    获得分类
+    // 获得分类
     @GetMapping("/getClassifyAll")
     public String[][] getClassify() {
         String[][] all = new String[11][];
@@ -36,7 +36,7 @@ public class SelectionController {
         return all;
     }
 
-//    获得选择中的所有课程
+    // 获得选择中的所有课程
     @PostMapping("/getSelectionSon")
     public Course[] getSelectionSon(@RequestBody String[] nowSelect){
         System.out.println(nowSelect[0]);

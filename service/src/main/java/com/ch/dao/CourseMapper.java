@@ -28,6 +28,7 @@ public interface CourseMapper {
     @Select("select u.picture img,u.name,d.* from user u,discuss d where d.userId=u.id and d.sectionId=#{id}")
     Comment[] getSectionComment(int id);
 
+    // 获取课程节的笔记
     @Select("select u.picture img,u.name,n.* from notes n,user u where u.id=n.userId and n.sectionId=#{id}")
     CourseNotes[] getSectionNotes(int id);
 
