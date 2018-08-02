@@ -9,14 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CommunityServiceImpl implements CommunityService{
+public class CommunityServiceImpl implements CommunityService {
 
     @Autowired
     CommunityMapper communityMapper;
 
-    // 猿问页面信息
+    // ch-ape猿问页面信息
     @Override
-    public  Community[] getCommunity(){
+    public Community[] getCommunity() {
         Community[] qs = this.communityMapper.getCommunity();
         for (Community q : qs) {
             Answer[] a = this.communityMapper.getAnswer(q.getId());
@@ -25,13 +25,13 @@ public class CommunityServiceImpl implements CommunityService{
         return qs;
     }
 
-    //猿问页面登陆者信息
+    //ch-ape 猿问页面登陆者信息
     @Override
     public User getUserpic(int id) {
         return this.communityMapper.getUserpic(id);
     }
 
-    // 获取猿问问题详细页面提问者信息，回答内容
+    // ch-community 获取猿问问题详细页面提问者信息，回答内容
     @Override
     public Community getApeCommunity(int id) {
         Community us = this.communityMapper.getApeCommunity(id);
@@ -40,15 +40,21 @@ public class CommunityServiceImpl implements CommunityService{
         return us;
     }
 
-    // ch-ape-quiz获取分类信息
+    // ch-ape-quiz 获取分类信息
     @Override
-    public String[] getClassify(){
+    public String[] getClassify() {
         return this.communityMapper.getClassify();
     }
 
-    // ch-ape-quiz插入提问信息
+    // ch-ape-quiz 插入提问信息
     @Override
-    public int setCommunity(Community quiz){
+    public int setCommunity(Community quiz) {
         return this.communityMapper.setCommunity(quiz);
+    }
+
+    // 插入猿问问题详细页面回答者内容,ch-community
+    @Override
+    public int setApeAnswer(Answer answer) {
+     return this.communityMapper.setApeAnswer(answer);
     }
 }

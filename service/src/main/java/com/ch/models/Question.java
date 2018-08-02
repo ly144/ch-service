@@ -1,9 +1,14 @@
 package com.ch.models;
 
+import java.util.Arrays;
+
 public class Question {
+    private int userId;  // 用户ID
+    private int sectionId; // 节ID
     private String img;
     private int id;
-    private String title;
+    private String title;  // 题目
+    private String content; // 题目内容
     private Answer[] answer;
     private int answerNum;
     private int agreeNum;
@@ -12,30 +17,19 @@ public class Question {
     private int chapter;
     private int section;
     private String sectionName;
-    private String time;
+    private String time; // 发布时间
 
     public Question() {
     }
 
-    public Question(String img, int id, String title, Answer[] answer, int answerNum, int agreeNum, int opposeNum, int lookNum, int chapter, int section, String sectionName, String time) {
+    public Question(int userId, int sectionId, String img, int id, String title, String content, Answer[] answer, int answerNum, int agreeNum, int opposeNum, int lookNum, int chapter, int section, String sectionName, String time) {
+        this.userId = userId;
+        this.sectionId = sectionId;
         this.img = img;
         this.id = id;
         this.title = title;
+        this.content = content;
         this.answer = answer;
-        this.answerNum = answerNum;
-        this.agreeNum = agreeNum;
-        this.opposeNum = opposeNum;
-        this.lookNum = lookNum;
-        this.chapter = chapter;
-        this.section = section;
-        this.sectionName = sectionName;
-        this.time = time;
-    }
-
-    public Question(String img, int id, String title, int answerNum, int agreeNum, int opposeNum, int lookNum, int chapter, int section, String sectionName, String time) {
-        this.img = img;
-        this.id = id;
-        this.title = title;
         this.answerNum = answerNum;
         this.agreeNum = agreeNum;
         this.opposeNum = opposeNum;
@@ -49,10 +43,13 @@ public class Question {
     @Override
     public String toString() {
         return "Question{" +
-                "img='" + img + '\'' +
+                "userId=" + userId +
+                ", sectionId=" + sectionId +
+                ", img='" + img + '\'' +
                 ", id=" + id +
                 ", title='" + title + '\'' +
-                ", answer=" + answer +
+                ", content='" + content + '\'' +
+                ", answer=" + Arrays.toString(answer) +
                 ", answerNum=" + answerNum +
                 ", agreeNum=" + agreeNum +
                 ", opposeNum=" + opposeNum +
@@ -62,6 +59,30 @@ public class Question {
                 ", sectionName='" + sectionName + '\'' +
                 ", time='" + time + '\'' +
                 '}';
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getSectionId() {
+        return sectionId;
+    }
+
+    public void setSectionId(int sectionId) {
+        this.sectionId = sectionId;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public int getId() {

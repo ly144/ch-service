@@ -1,7 +1,9 @@
 package com.ch.dao;
 
 import com.ch.models.*;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Component;
 
@@ -32,4 +34,35 @@ public interface CourseMapper {
     @Select("select u.picture img,u.name,n.* from notes n,user u where u.id=n.userId and n.sectionId=#{id}")
     CourseNotes[] getSectionNotes(int id);
 
+    //  插入课程节的问答
+    @Insert("INSERT into question(userId,sectionId,title,content,time) VALUES( #{ques.userId},#{ques.sectionId},#{ques.title},#{ques.content},#{ques.time} )")
+    int  setSectionQuestion(@Param("ques") Question ques);
+
+    // 插入课程节的笔记
+    @Insert("INSERT into notes(userId,sectionId,content,time) VALUES(#{notes.userId},#{notes.sectionId},#{notes.content},#{notes.time} )")
+    int setSectionNotes(@Param("notes") Notes notes);
+
+    // 插入节的评论
+    @Insert("INSERT into discuss(userId,sectionId,content,time) VALUES(#{com.userId},#{com.sectionId},#{com.content},#{com.time})")
+    int setSectionComment(@Param("com") Comment com);
+
+    // 获取ch-notes-son的详细内容,传入笔记id
+    @Select("select notes.*,user.name,user.picture img,chapters.chapter,sections.section,sections.name sectionName from notes,user,chapters,sections where notes.id=#{id} and notes.userId=user.id and notes.sectionId=sections.id and sections.chapterId=chapters.id")
+    CourseNotes getNotesSon(int id);
+
+    // 获取ch-notes-son的课程详细内容,传入课程id
+    @Select("select course.*,u.picture authorImg,u.name authorName,u.job authorJob,u.signature from course,user u where course.id=#{id} and course.userId=u.id")
+    Detail getNoteSonCourse(int id);
+
+    // 获取ch-question-son 的问题详细内容,传入question.id
+    @Select("select d.name directions,t.name classify,c.name courseName,q.*,u.name,u.picture,ch.chapter,s.section from direction d,type t,course c,question q,user u,chapters ch,sections s where q.id=#{id} and q.userId=u.id and q.sectionId=s.id and s.chapterId=ch.id and ch.courseId=c.id and c.typeId=t.id and t.directionId=d.id")
+    QuestionSon getQuestionSon(int id);
+
+    // 获取ch-question-son 的回答详细内容,传入questionId
+    @Select("select user.name,user.picture img,answer.* from user,answer where answer.questionId=#{id} and answer.userId=user.id")
+    Answer[] getQuestionSonAnswer(int id);
+
+    // 插入ch-question-son 的回答详细内容
+    @Insert("INSERT into answer(userId,questionId,content,time) VALUES (#{answer.userId},#{answer.questionId},#{answer.content},#{answer.time})")
+    int setQuestionSonAnswer(@Param("answer") Answer answer);
 }

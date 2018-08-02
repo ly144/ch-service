@@ -1,6 +1,9 @@
 package com.ch.models;
 
 public class Answer {
+    private int userId; // 回答者用户id
+    private int questionId; // 问答id
+    private int communityId; // 猿问问题id
     private String img;   // 回答者用户头像
     private String name;  // 回答者姓名
     private String content;  // 回答内容
@@ -13,7 +16,10 @@ public class Answer {
     public Answer() {
     }
 
-    public Answer(String img, String name, String content, String time, int agreeNum, int opposeNum, int storey, int answerNum) {
+    public Answer(int userId, int questionId, int communityId, String img, String name, String content, String time, int agreeNum, int opposeNum, int storey, int answerNum) {
+        this.userId = userId;
+        this.questionId = questionId;
+        this.communityId = communityId;
         this.img = img;
         this.name = name;
         this.content = content;
@@ -27,7 +33,10 @@ public class Answer {
     @Override
     public String toString() {
         return "Answer{" +
-                "img='" + img + '\'' +
+                "userId=" + userId +
+                ", questionId=" + questionId +
+                ", communityId=" + communityId +
+                ", img='" + img + '\'' +
                 ", name='" + name + '\'' +
                 ", content='" + content + '\'' +
                 ", time='" + time + '\'' +
@@ -36,6 +45,30 @@ public class Answer {
                 ", storey=" + storey +
                 ", answerNum=" + answerNum +
                 '}';
+    }
+
+    public int getQuestionId() {
+        return questionId;
+    }
+
+    public void setQuestionId(int questionId) {
+        this.questionId = questionId;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getCommunityId() {
+        return communityId;
+    }
+
+    public void setCommunityId(int communityId) {
+        this.communityId = communityId;
     }
 
     public String getImg() {
