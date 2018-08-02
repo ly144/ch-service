@@ -3,6 +3,7 @@ package com.ch.models;
 public class Detail {
     private String direction;    // 方向
     private String classify;     // 分类
+    private String img; // 课程图片
     private String name;         // 课程名称
     private String intro;        // 课程简介
     private String difficulty;   // 课程难度
@@ -16,12 +17,14 @@ public class Detail {
     private int learned;         // 学生学习百分比
     private String learnTime;    // 学生学习耗时
     private String learnProgress;// 学生学至哪里
+    private String signature; // 个性签名
 
     public Detail() {}
 
-    public Detail(String direction, String classify, String name, String intro, String difficulty, String time, int people, String know, String learnWhat, String authorImg, String authorName, String authorJob, int learned, String learnTime, String learnProgress) {
+    public Detail(String direction, String classify, String img, String name, String intro, String difficulty, String time, int people, String know, String learnWhat, String authorImg, String authorName, String authorJob, int learned, String learnTime, String learnProgress, String signature) {
         this.direction = direction;
         this.classify = classify;
+        this.img = img;
         this.name = name;
         this.intro = intro;
         this.difficulty = difficulty;
@@ -35,6 +38,7 @@ public class Detail {
         this.learned = learned;
         this.learnTime = learnTime;
         this.learnProgress = learnProgress;
+        this.signature = signature;
     }
 
     @Override
@@ -42,6 +46,7 @@ public class Detail {
         return "Detail{" +
                 "direction='" + direction + '\'' +
                 ", classify='" + classify + '\'' +
+                ", img='" + img + '\'' +
                 ", name='" + name + '\'' +
                 ", intro='" + intro + '\'' +
                 ", difficulty='" + difficulty + '\'' +
@@ -55,7 +60,24 @@ public class Detail {
                 ", learned=" + learned +
                 ", learnTime='" + learnTime + '\'' +
                 ", learnProgress='" + learnProgress + '\'' +
+                ", signature='" + signature + '\'' +
                 '}';
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public String getSignature() {
+        return signature;
+    }
+
+    public void setSignature(String signature) {
+        this.signature = signature;
     }
 
     public String getDirection() {

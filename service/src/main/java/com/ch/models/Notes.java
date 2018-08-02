@@ -1,19 +1,23 @@
 package com.ch.models;
 
 public class Notes {
+    private int userId; // 用户id
+    private int sectionId; // 节id
     private String courseName;
     private int chapter; // 第几章
     private int section; // 第几节
     private String sectionName;
-    private String content;
+    private String content; // 发表内容
     private int agreeNum;
     private int gatherNum;
-    private String time;
+    private String time; // 发表时间
 
     public Notes() {
     }
 
-    public Notes(String courseName, int chapter, int section, String sectionName, String content, int agreeNum, int gatherNum, String time) {
+    public Notes(int userId, int sectionId, String courseName, int chapter, int section, String sectionName, String content, int agreeNum, int gatherNum, String time) {
+        this.userId = userId;
+        this.sectionId = sectionId;
         this.courseName = courseName;
         this.chapter = chapter;
         this.section = section;
@@ -22,6 +26,38 @@ public class Notes {
         this.agreeNum = agreeNum;
         this.gatherNum = gatherNum;
         this.time = time;
+    }
+
+    @Override
+    public String toString() {
+        return "Notes{" +
+                "userId=" + userId +
+                ", sectionId=" + sectionId +
+                ", courseName='" + courseName + '\'' +
+                ", chapter=" + chapter +
+                ", section=" + section +
+                ", sectionName='" + sectionName + '\'' +
+                ", content='" + content + '\'' +
+                ", agreeNum=" + agreeNum +
+                ", gatherNum=" + gatherNum +
+                ", time='" + time + '\'' +
+                '}';
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getSectionId() {
+        return sectionId;
+    }
+
+    public void setSectionId(int sectionId) {
+        this.sectionId = sectionId;
     }
 
     public String getCourseName() {
@@ -88,15 +124,4 @@ public class Notes {
         this.time = time;
     }
 
-    @Override
-    public String toString() {
-        return "Notes{" +
-                "courseName='" + courseName + '\'' +
-                ", sectionName='" + sectionName + '\'' +
-                ", content='" + content + '\'' +
-                ", agreeNum=" + agreeNum +
-                ", gatherNum=" + gatherNum +
-                ", time='" + time + '\'' +
-                '}';
-    }
 }

@@ -14,12 +14,13 @@ public class CourseServiceImpl implements CourseService {
 
     // 获得首页推荐课程详细信息
     @Override
-    public Course[] getCourse(){
+    public Course[] getCourse() {
         return this.courseMapper.getCourse();
     }
 
     /**
      * 获取课程学习视频
+     *
      * @param id
      * @return
      */
@@ -30,6 +31,7 @@ public class CourseServiceImpl implements CourseService {
 
     /**
      * 获取课程节的问答
+     *
      * @param id
      * @return
      */
@@ -51,5 +53,53 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public CourseNotes[] getSectionNotes(int id) {
         return this.courseMapper.getSectionNotes(id);
+    }
+
+    //  插入课程节的问答
+    @Override
+    public int setSectionQuestion(Question ques) {
+        return this.courseMapper.setSectionQuestion(ques);
+    }
+
+    // 插入课程节的笔记
+    @Override
+    public int setSectionNotes(Notes notes) {
+        return this.courseMapper.setSectionNotes(notes);
+    }
+
+    // 插入节的评论
+    @Override
+    public int setSectionComment(Comment com) {
+        return this.courseMapper.setSectionComment(com);
+    }
+
+    // 获取ch-notes-son的详细内容,传入笔记id
+    @Override
+    public CourseNotes getNotesSon(int id) {
+        return this.courseMapper.getNotesSon(id);
+    }
+
+    // 获取ch-notes-son的课程详细内容,传入课程id
+    @Override
+    public Detail getNoteSonCourse(int id) {
+        return this.courseMapper.getNoteSonCourse(id);
+    }
+
+    // 获取ch-question-son 的问题详细内容,传入question.id
+    @Override
+    public QuestionSon getQuestionSon(int id) {
+        return this.courseMapper.getQuestionSon(id);
+    }
+
+    // 获取ch-question-son 的回答详细内容,传入questionId
+    @Override
+    public Answer[] getQuestionSonAnswer(int id){
+        return this.courseMapper.getQuestionSonAnswer(id);
+    }
+
+    // 插入ch-question-son 的回答详细内容
+    @Override
+    public int setQuestionSonAnswer(Answer answer){
+        return this.courseMapper.setQuestionSonAnswer(answer);
     }
 }

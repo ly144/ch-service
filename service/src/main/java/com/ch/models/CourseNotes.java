@@ -1,11 +1,11 @@
 package com.ch.models;
 
 public class CourseNotes {
-    private String img;
-    private String name;
+    private String img; // 用户头像
+    private String name; //用户名
     private int chapter; // 第几章
     private int section; // 第几节
-    private String sectionName;
+    private String sectionName; // 节名
     private String content;
     private int agreeNum;
     private int gatherNum;

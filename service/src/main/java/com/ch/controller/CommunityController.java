@@ -1,5 +1,6 @@
 package com.ch.controller;
 
+import com.ch.models.Answer;
 import com.ch.models.Community;
 import com.ch.models.User;
 import com.ch.service.CommunityService;
@@ -46,4 +47,10 @@ public class CommunityController {
         return this.communityService.setCommunity(quiz);
     }
 
+    // 插入猿问问题详细页面回答者内容,ch-community
+    @PostMapping("/setApeAnswer")
+    public int setApeAnswer(@RequestBody Answer answer) {
+        System.out.println(answer);
+        return this.communityService.setApeAnswer(answer);
+    }
 }
