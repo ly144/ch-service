@@ -69,6 +69,86 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- spring-security 和 jwt -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.7.0</version>
+		</dependency>
+
+		<!-- 阿里云短信发送 -->
+		<!--<dependency>-->
+			<!--<groupId>com.aliyun</groupId>-->
+			<!--<artifactId>aliyun-java-sdk-core</artifactId>-->
+			<!--<version>3.7.1</version>-->
+		<!--</dependency>-->
+		<!--<dependency>-->
+			<!--<groupId>com.aliyun</groupId>-->
+			<!--<artifactId>aliyun-java-sdk-dysmsapi</artifactId>-->
+			<!--<version>1.1.0</version>-->
+		<!--</dependency>-->
+        <dependency>
+            <groupId>aliyun-message-sdk-core</groupId>
+            <artifactId>aliyun-message-sdk-core</artifactId>
+            <version>3.3.1</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/aliyun-java-sdk-core-3.3.1.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>aliyun-java-sdk-dysmsapi</groupId>
+            <artifactId>aliyun-java-sdk-dysmsapi</artifactId>
+            <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/libs/aliyun-java-sdk-dysmsapi-1.0.0.jar</systemPath>
+        </dependency>
+
+		<!-- JavaMail邮箱发送 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+
+		<!--spring-social 相关-->
+		<dependency>
+			<groupId>org.springframework.social</groupId>
+			<artifactId>spring-social-config</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.social</groupId>
+			<artifactId>spring-social-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.social</groupId>
+			<artifactId>spring-social-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.social</groupId>
+			<artifactId>spring-social-web</artifactId>
+		</dependency>
+
+		<!-- redis -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+
+		<!-- activeMQ -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-activemq</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-all</artifactId>
+			<version>5.15.4</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

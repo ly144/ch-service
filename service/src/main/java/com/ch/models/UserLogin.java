@@ -3,6 +3,24 @@ package com.ch.models;
 public class UserLogin {
     String username;
     String password;
+    String phone;
+    String code;
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
 
     public String getUsername() {
         return username;
@@ -23,9 +41,11 @@ public class UserLogin {
     public UserLogin() {
     }
 
-    public UserLogin(String username, String password) {
+    public UserLogin(String username, String password, String phone, String code) {
         this.username = username;
         this.password = password;
+        this.phone = phone;
+        this.code = code;
     }
 
     @Override
@@ -33,6 +53,8 @@ public class UserLogin {
         return "UserLogin{" +
                 "username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", phone='" + phone + '\'' +
+                ", code='" + code + '\'' +
                 '}';
     }
 }

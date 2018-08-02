@@ -3,6 +3,7 @@ package com.ch.dao;
 import com.ch.models.*;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Component;
 
@@ -10,11 +11,11 @@ import org.springframework.stereotype.Component;
 @Mapper
 public interface UserMapper {
 
-    @Insert("insert into user(id, name, password) values(#{id},#{name},#{password})")
-    int add(User user);
+    @Insert("insert into user(name, password,phone) values(#{user.username},#{user.password},#{user.phone})")
+    int regis(@Param("user")UserLogin user);
 
     @Select("select * from user where name = #{name}")
-    User[] getUserByName(String name);
+    User getUserByName(String name);
 
     @Select("select name,picture,sex,signature,learnTime,attentionNum,phone,email,job,address from user where name = #{name}")
     Person getPerson(String name);

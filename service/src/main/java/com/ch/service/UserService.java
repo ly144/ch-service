@@ -7,8 +7,7 @@ import com.ch.models.Person;
 import com.ch.models.PersonCourse;
 
 public interface UserService {
-    int add(User user);
-    User[] judgeLogin(String name);
+    User judgeLogin(String name);
     Person getPerson(String name);
     PersonCourse[] getPersonCourse(int id);
     Ape[] getPersonApeQuiz(int id);

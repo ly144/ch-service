@@ -16,14 +16,8 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserMapper userMapper;
 
-
     @Override
-    public int add(User user) {
-        return this.userMapper.add(user);
-    }
-
-    @Override
-    public User[] judgeLogin(String name) {
+    public User judgeLogin(String name) {
         return this.userMapper.getUserByName(name);
     }
 
