@@ -2,7 +2,9 @@ package com.ch.service.serviceImpl;
 
 import com.ch.dao.UserMapper;
 import com.ch.config.JwtTokenUtil;
+import com.ch.models.User;
 import com.ch.models.UserLogin;
+import com.ch.models.UserResponse;
 import com.ch.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -29,7 +31,7 @@ public class IUserServiceImpl implements IUserService {
     }
 
     @Override
-    public String login(String username, String password) {
+    public UserResponse login(String username, String password) {
         System.out.println("1."+username+"-"+password);
         UserDetails userDetails = userDetailsService.loadUserByUsername(username); // 用户判断
 //        System.out.println(BCrypt.checkpw(password, userDetails.getPassword()));
@@ -37,7 +39,8 @@ public class IUserServiceImpl implements IUserService {
         if ( !passwordEncoder.matches(password, userDetails.getPassword()) ) { // 解码
             return null;
         }
-        return jwtTokenUtil.generateToken(userDetails); // 生成令牌
+        User user = this.userMapper.getUserByName(username);
+        return new UserResponse(user.getId(), jwtTokenUtil.generateToken(userDetails)); // 生成令牌
     }
 
     @Override

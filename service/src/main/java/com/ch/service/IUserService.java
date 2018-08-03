@@ -1,6 +1,7 @@
 package com.ch.service;
 
 import com.ch.models.UserLogin;
+import com.ch.models.UserResponse;
 
 /**
  * 用户操作接口
@@ -13,7 +14,7 @@ public interface IUserService {
      * @param password 密码
      * @return 操作结果
      */
-    String login(String username, String password);
+    UserResponse login(String username, String password);
 
     /**
      * 用户注册

@@ -144,6 +144,15 @@
 			<artifactId>spring-boot-starter-activemq</artifactId>
 		</dependency>
 
+		<!-- FastDFS -->
+		<dependency>
+			<groupId>fastdfs</groupId>
+			<artifactId>fastdfs</artifactId>
+			<version>1.2</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/libs/fastdfs-1.2.jar</systemPath>
+		</dependency>
+
 	</dependencies>
 
 	<build>
