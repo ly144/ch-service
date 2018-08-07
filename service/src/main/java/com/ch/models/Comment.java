@@ -1,6 +1,8 @@
 package com.ch.models;
 
-public class Comment {
+import java.io.Serializable;
+
+public class Comment implements Serializable {
     private int userId;  // 用户ID
     private int sectionId; // 节ID
     private String img;

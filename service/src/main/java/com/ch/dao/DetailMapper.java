@@ -11,6 +11,11 @@ import org.springframework.stereotype.Component;
 public interface DetailMapper {
 
     // 获取课程详细页面的课程信息，教师信息，学生信息
+    @Select("SELECT direction.name direction,type.name classify,course.* ,user.picture authorImg,user.name authorName,user.job authorJob " +
+            "from direction,type,course,user where course.id=#{courseId} and course.userId=user.id and course.typeId=type.id and type.directionId=direction.id")
+    Detail getDetailNoLogin(int courseId);
+
+    // 获取课程详细页面的课程信息，教师信息，学生信息
     @Select("SELECT direction.name direction,type.name classify,course.* ,user.picture authorImg,user.name authorName,user.job authorJob,usercourse.learned,usercourse.learnTime,usercourse.learnProgress " +
             "from direction,type,course,user,usercourse where course.id=#{courseId} and course.userId=user.id and usercourse.courseId=course.id and usercourse.userId=#{userId} and " +
             "course.typeId=type.id and type.directionId=direction.id")

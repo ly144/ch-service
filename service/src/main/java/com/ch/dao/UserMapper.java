@@ -3,6 +3,7 @@ package com.ch.dao;
 import com.ch.models.*;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Component;
 
@@ -10,14 +11,14 @@ import org.springframework.stereotype.Component;
 @Mapper
 public interface UserMapper {
 
-    @Insert("insert into user(id, name, password) values(#{id},#{name},#{password})")
-    int add(User user);
+    @Insert("insert into user(name,password,phone) values(#{user.username},#{user.password},#{user.phone})")
+    int regis(@Param("user")UserLogin user);
 
     @Select("select * from user where name = #{name}")
-    User[] getUserByName(String name);
+    User getUserByName(String name);
 
-    @Select("select name,picture,sex,signature,learnTime,attentionNum,phone,email,job,address from user where name = #{name}")
-    Person getPerson(String name);
+    @Select("select * from user where id = #{id}")
+    Person getPerson(int id);
 
     @Select("select uc.time,c.img,c.name,uc.learned,uc.learnTime,uc.learnProgress,uc.notesNum,uc.questionNum from usercourse uc,course c where uc.courseId=c.id and uc.userId=#{id}")
     PersonCourse[] getPersonCourse(int id);
@@ -33,4 +34,8 @@ public interface UserMapper {
 
     @Select("select c.name courseName,ch.chapter,s.section,s.name sectionName,n.content,n.agreeNum,n.gatherNum,n.time from notes n,sections s,chapters ch,course c where n.sectionId=s.id and s.chapterId=ch.id and ch.courseId=c.id and n.userId=#{id}")
     Notes[] getNotes(int id);
+
+    @Insert("insert into user(name,picture,sex,signature,job,address) values(#{per.name},#{per.picture},#{per.sex},#{per.signature},#{per.job},#{per.address})")
+    int setPerson(@Param("per")Person person);
+
 }

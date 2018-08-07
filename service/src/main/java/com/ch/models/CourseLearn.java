@@ -1,6 +1,8 @@
 package com.ch.models;
 
-public class CourseLearn {
+import java.io.Serializable;
+
+public class CourseLearn implements Serializable {
     private int chapter;
     private int section;
     private String name;

@@ -1,8 +1,9 @@
 package com.ch.models;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class Question {
+public class Question implements Serializable {
     private int userId;  // 用户ID
     private int sectionId; // 节ID
     private String img;

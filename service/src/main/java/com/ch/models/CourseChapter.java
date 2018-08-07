@@ -1,6 +1,8 @@
 package com.ch.models;
 
-public class CourseChapter {
+import java.io.Serializable;
+
+public class CourseChapter implements Serializable {
     private int id; // 课程id
     private String name; // 课程名称
     private String difficulty; // 课程难度

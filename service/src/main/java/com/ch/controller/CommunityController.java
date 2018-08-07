@@ -7,6 +7,7 @@ import com.ch.service.CommunityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/ape")
 public class CommunityController {

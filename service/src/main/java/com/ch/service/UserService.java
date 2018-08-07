@@ -7,12 +7,12 @@ import com.ch.models.Person;
 import com.ch.models.PersonCourse;
 
 public interface UserService {
-    int add(User user);
-    User[] judgeLogin(String name);
-    Person getPerson(String name);
+    User judgeLogin(String name);
+    Person getPerson(int id);
     PersonCourse[] getPersonCourse(int id);
     Ape[] getPersonApeQuiz(int id);
     Ape[] getPersonApeAnswer(int id);
     Ape[] getPersonApeAttention(int id);
     Notes[] getNotes(int id);
+    int setPerson(Person person);
 }

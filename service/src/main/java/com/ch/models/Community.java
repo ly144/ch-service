@@ -1,8 +1,9 @@
 package com.ch.models;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class Community {
+public class Community implements Serializable {
     private int id;  //获取提问者id
     private String img; // 分类头像
     private String classify; // 类型

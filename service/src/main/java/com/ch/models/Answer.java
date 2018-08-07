@@ -1,6 +1,8 @@
 package com.ch.models;
 
-public class Answer {
+import java.io.Serializable;
+
+public class Answer implements Serializable {
     private int userId; // 回答者用户id
     private int questionId; // 问答id
     private int communityId; // 猿问问题id

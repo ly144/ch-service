@@ -1,6 +1,9 @@
 package com.ch.models;
 
-public class Notes {
+import java.io.Serializable;
+
+public class Notes implements Serializable {
+    private int id;
     private int userId; // 用户id
     private int sectionId; // 节id
     private String courseName;
@@ -15,7 +18,8 @@ public class Notes {
     public Notes() {
     }
 
-    public Notes(int userId, int sectionId, String courseName, int chapter, int section, String sectionName, String content, int agreeNum, int gatherNum, String time) {
+    public Notes(int id, int userId, int sectionId, String courseName, int chapter, int section, String sectionName, String content, int agreeNum, int gatherNum, String time) {
+        this.id = id;
         this.userId = userId;
         this.sectionId = sectionId;
         this.courseName = courseName;
@@ -31,7 +35,8 @@ public class Notes {
     @Override
     public String toString() {
         return "Notes{" +
-                "userId=" + userId +
+                "id=" + id +
+                ", userId=" + userId +
                 ", sectionId=" + sectionId +
                 ", courseName='" + courseName + '\'' +
                 ", chapter=" + chapter +
@@ -42,6 +47,14 @@ public class Notes {
                 ", gatherNum=" + gatherNum +
                 ", time='" + time + '\'' +
                 '}';
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getUserId() {
