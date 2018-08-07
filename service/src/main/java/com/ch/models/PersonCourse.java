@@ -1,6 +1,8 @@
 package com.ch.models;
 
-public class PersonCourse {
+import java.io.Serializable;
+
+public class PersonCourse implements Serializable {
     private String time;
     private String img;
     private String name;

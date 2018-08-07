@@ -2,7 +2,9 @@ package com.ch.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Ape {
+import java.io.Serializable;
+
+public class Ape implements Serializable {
 
     @JsonProperty("type")
     private String name;

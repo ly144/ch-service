@@ -22,8 +22,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Person getPerson(String name) {
-        return this.userMapper.getPerson(name);
+    public Person getPerson(int id) {
+        return this.userMapper.getPerson(id);
     }
 
     @Override
@@ -49,5 +49,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public Notes[] getNotes(int id) {
         return this.userMapper.getNotes(id);
+    }
+
+    @Override
+    public int setPerson(Person person) {
+        return this.userMapper.setPerson(person);
     }
 }

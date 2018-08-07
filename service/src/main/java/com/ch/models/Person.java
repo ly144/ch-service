@@ -1,6 +1,8 @@
 package com.ch.models;
 
-public class Person {
+import java.io.Serializable;
+
+public class Person implements Serializable {
     private String name; // 用户昵称
     private String picture; // 用户头像
     private String sex; // 用户性别

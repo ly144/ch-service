@@ -1,6 +1,8 @@
 package com.ch.models;
 
-public class QuestionSon {
+import java.io.Serializable;
+
+public class QuestionSon implements Serializable {
     private String directions; // 方向
     private String classify; // 分类
     private String courseName; // 课程名

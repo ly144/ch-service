@@ -1,6 +1,8 @@
 package com.ch.models;
 
-public class Sections {
+import java.io.Serializable;
+
+public class Sections implements Serializable {
     private int id;         //节ID
     private int chapterId; // 章id
     private int section;    //第几节

@@ -1,6 +1,8 @@
 package com.ch.models;
 
-public class Chapter {
+import java.io.Serializable;
+
+public class Chapter implements Serializable {
     private int id;            // 章ID
     private int courseId; // 课程ID
     private int chapter;       // 第几章

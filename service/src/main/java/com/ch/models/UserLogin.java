@@ -1,6 +1,8 @@
 package com.ch.models;
 
-public class UserLogin {
+import java.io.Serializable;
+
+public class UserLogin implements Serializable {
     String username;
     String password;
     String phone;

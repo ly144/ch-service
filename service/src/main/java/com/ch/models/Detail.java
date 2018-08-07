@@ -1,6 +1,8 @@
 package com.ch.models;
 
-public class Detail {
+import java.io.Serializable;
+
+public class Detail implements Serializable {
     private String direction;    // 方向
     private String classify;     // 分类
     private String img; // 课程图片

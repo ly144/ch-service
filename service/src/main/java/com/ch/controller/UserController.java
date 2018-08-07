@@ -47,13 +47,13 @@ public class UserController {
 
     /**
      * 个人信息
-     * @param name
+     * @param id
      * @return Person
      */
     @PostMapping("/getPerson")
-    public Person getPerson(@RequestBody String name) {
-        System.out.println(name);
-        return this.userService.getPerson(name);
+    public Person getPerson(@RequestBody int id) {
+        System.out.println(id);
+        return this.userService.getPerson(id);
     }
 
     /**
@@ -100,10 +100,21 @@ public class UserController {
         return this.userService.getPersonApeAttention(id);
     }
 
+    /**
+     * 个人信息之猿问之笔记
+     * @param id
+     * @return
+     */
     @PostMapping("/getNotes")
     public Notes[] getNotes(@RequestBody int id) {
         System.out.println(id);
         return this.userService.getNotes(id);
+    }
+
+    @PostMapping("setPerson")
+    public int setPerson(@RequestBody Person person) {
+        System.out.println(person);
+        return this.userService.setPerson(person);
     }
 
 }

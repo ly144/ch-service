@@ -1,6 +1,9 @@
 package com.ch.models;
 
-public class CourseNotes {
+import java.io.Serializable;
+
+public class CourseNotes implements Serializable {
+    private int id;
     private String img; // 用户头像
     private String name; //用户名
     private int chapter; // 第几章
@@ -14,7 +17,8 @@ public class CourseNotes {
     public CourseNotes() {
     }
 
-    public CourseNotes(String img, String name, int chapter, int section, String sectionName, String content, int agreeNum, int gatherNum, String time) {
+    public CourseNotes(int id, String img, String name, int chapter, int section, String sectionName, String content, int agreeNum, int gatherNum, String time) {
+        this.id = id;
         this.img = img;
         this.name = name;
         this.chapter = chapter;
@@ -24,6 +28,14 @@ public class CourseNotes {
         this.agreeNum = agreeNum;
         this.gatherNum = gatherNum;
         this.time = time;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getImg() {

@@ -1,6 +1,8 @@
 package com.ch.models;
 
-public class Result {
+import java.io.Serializable;
+
+public class Result implements Serializable {
     private boolean success;
     private String message;
 
