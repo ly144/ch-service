@@ -26,8 +26,18 @@ public class CourseController {
      */
     @PostMapping("/getCourseLearn")
     CourseLearn getCourseLearn(@RequestBody int id) {
-        System.out.println("getCourseLearn" + id);
+        System.out.println("getCourseLearn:" + id);
         return this.courseService.getCourseLearn(id);
+    }
+
+    /**
+     * 历史记录
+     * @param historical
+     * @return
+     */
+    @PostMapping("/setHistorical")
+    public int setHistorical(@RequestBody Historical historical) {
+        return this.courseService.setHistorical(historical);
     }
 
     /**

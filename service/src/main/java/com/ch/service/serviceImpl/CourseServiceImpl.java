@@ -29,6 +29,46 @@ public class CourseServiceImpl implements CourseService {
         return this.courseMapper.getCourseLearn(id);
     }
 
+    @Override
+    public int setHistorical(Historical historical) {
+        Historical his = this.courseMapper.getUserHistorical(historical.getCourseId(), historical.getUserId());
+        if (his != null) {
+            if (historical.getTime() != null) {
+                his.setTime(historical.getTime());
+            }
+            if (historical.getLearned() != 0) {
+                his.setLearned(historical.getLearned());
+            }
+            if (historical.getLearnTime() != null) {
+                his.setLearnTime(historical.getLearnTime());
+            }
+            if (historical.getLearnProgress() != null) {
+                his.setLearnProgress(historical.getLearnProgress());
+            }
+            if (historical.getNotesNum() != 0) {
+                his.setNotesNum(historical.getNotesNum());
+            }
+            if (historical.getQuestionNum() != 0) {
+                his.setQuestionNum(historical.getQuestionNum());
+            }
+            if (historical.getStatue() != 0) {
+                his.setStatue(historical.getStatue());
+            }
+            if (historical.getLearnedSection() != null) {
+                his.setLearnedSection(historical.getLearnedSection());
+            }
+            if (historical.getLearningHalf() != null) {
+                his.setLearningHalf(historical.getLearningHalf());
+            }
+            if (historical.getNewLearn() != 0) {
+                his.setNewLearn(historical.getNewLearn());
+            }
+            return this.courseMapper.changeUserHistorical(his);
+        } else {
+            return this.courseMapper.setUserHistorical(historical);
+        }
+    }
+
     /**
      * 获取课程节的问答
      *

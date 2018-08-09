@@ -61,6 +61,23 @@ public class IUserServiceImpl implements IUserService {
     }
 
     @Override
+    public int changeEmail(String email, int id) {
+        return this.userMapper.changeEmail(email, id);
+    }
+
+    @Override
+    public int changePhone(String phone, int id) {
+        return this.userMapper.changePhone(phone, id);
+    }
+
+    @Override
+    public int changePass(String password, int id) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(); // 使用BCrypt加密算法对密码加密
+        password = passwordEncoder.encode(password); // 给密码加密
+        return this.userMapper.changePass(password, id);
+    }
+
+    @Override
     public String refreshToken(String oldToken) {
         String token = oldToken.substring("Bearer ".length());
         if (!jwtTokenUtil.isTokenExpired(token)) { // 判断是否过期

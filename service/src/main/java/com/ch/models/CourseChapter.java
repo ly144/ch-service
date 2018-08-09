@@ -8,17 +8,23 @@ public class CourseChapter implements Serializable {
     private String difficulty; // 课程难度
     private String uploadTime;
     private String intro;          //课程简介
+    private String learnedSection;  // 已经学习记录
+    private String learningHalf;    //学至一半记录
+    private int newLearn;       // 最新学习
     private Chapter[] chapters;     //第几章
 
     public CourseChapter() {
     }
 
-    public CourseChapter(int id, String name, String difficulty, String uploadTime, String intro, Chapter[] chapters) {
+    public CourseChapter(int id, String name, String difficulty, String uploadTime, String intro, String learnedSection, String learningHalf, int newLearn, Chapter[] chapters) {
         this.id = id;
         this.name = name;
         this.difficulty = difficulty;
         this.uploadTime = uploadTime;
         this.intro = intro;
+        this.learnedSection = learnedSection;
+        this.learningHalf = learningHalf;
+        this.newLearn = newLearn;
         this.chapters = chapters;
     }
 
@@ -60,6 +66,30 @@ public class CourseChapter implements Serializable {
 
     public void setIntro(String intro) {
         this.intro = intro;
+    }
+
+    public String getLearnedSection() {
+        return learnedSection;
+    }
+
+    public void setLearnedSection(String learnedSection) {
+        this.learnedSection = learnedSection;
+    }
+
+    public String getLearningHalf() {
+        return learningHalf;
+    }
+
+    public void setLearningHalf(String learningHalf) {
+        this.learningHalf = learningHalf;
+    }
+
+    public int getNewLearn() {
+        return newLearn;
+    }
+
+    public void setNewLearn(int newLearn) {
+        this.newLearn = newLearn;
     }
 
     public Chapter[] getChapters() {

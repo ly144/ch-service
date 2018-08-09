@@ -24,6 +24,12 @@ public interface IUserService {
      */
     String register(UserLogin userLogin);
 
+    int changeEmail(String email, int id);
+
+    int changePhone(String phone, int id);
+
+    int changePass(String password, int id);
+
     /**
      * 刷新密钥
      *

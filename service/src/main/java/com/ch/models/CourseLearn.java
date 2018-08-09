@@ -3,6 +3,7 @@ package com.ch.models;
 import java.io.Serializable;
 
 public class CourseLearn implements Serializable {
+    private int courseId;
     private int chapter;
     private int section;
     private String name;
@@ -11,7 +12,8 @@ public class CourseLearn implements Serializable {
     public CourseLearn() {
     }
 
-    public CourseLearn(int chapter, int section, String name, String video) {
+    public CourseLearn(int courseId, int chapter, int section, String name, String video) {
+        this.courseId = courseId;
         this.chapter = chapter;
         this.section = section;
         this.name = name;
@@ -21,11 +23,20 @@ public class CourseLearn implements Serializable {
     @Override
     public String toString() {
         return "CourseLearn{" +
-                "chapter=" + chapter +
+                "courseId=" + courseId +
+                ", chapter=" + chapter +
                 ", section=" + section +
                 ", name='" + name + '\'' +
                 ", video='" + video + '\'' +
                 '}';
+    }
+
+    public int getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
     }
 
     public int getChapter() {

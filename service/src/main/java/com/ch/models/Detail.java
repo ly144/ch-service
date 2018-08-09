@@ -19,11 +19,12 @@ public class Detail implements Serializable {
     private int learned;         // 学生学习百分比
     private String learnTime;    // 学生学习耗时
     private String learnProgress;// 学生学至哪里
+    private int sectionId; // 开始学习的节
     private String signature; // 个性签名
 
     public Detail() {}
 
-    public Detail(String direction, String classify, String img, String name, String intro, String difficulty, String time, int people, String know, String learnWhat, String authorImg, String authorName, String authorJob, int learned, String learnTime, String learnProgress, String signature) {
+    public Detail(String direction, String classify, String img, String name, String intro, String difficulty, String time, int people, String know, String learnWhat, String authorImg, String authorName, String authorJob, int learned, String learnTime, String learnProgress, int sectionId, String signature) {
         this.direction = direction;
         this.classify = classify;
         this.img = img;
@@ -40,6 +41,7 @@ public class Detail implements Serializable {
         this.learned = learned;
         this.learnTime = learnTime;
         this.learnProgress = learnProgress;
+        this.sectionId = sectionId;
         this.signature = signature;
     }
 
@@ -62,24 +64,9 @@ public class Detail implements Serializable {
                 ", learned=" + learned +
                 ", learnTime='" + learnTime + '\'' +
                 ", learnProgress='" + learnProgress + '\'' +
+                ", sectionId=" + sectionId +
                 ", signature='" + signature + '\'' +
                 '}';
-    }
-
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String img) {
-        this.img = img;
-    }
-
-    public String getSignature() {
-        return signature;
-    }
-
-    public void setSignature(String signature) {
-        this.signature = signature;
     }
 
     public String getDirection() {
@@ -96,6 +83,14 @@ public class Detail implements Serializable {
 
     public void setClassify(String classify) {
         this.classify = classify;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public String getName() {
@@ -200,5 +195,21 @@ public class Detail implements Serializable {
 
     public void setLearnProgress(String learnProgress) {
         this.learnProgress = learnProgress;
+    }
+
+    public int getSectionId() {
+        return sectionId;
+    }
+
+    public void setSectionId(int sectionId) {
+        this.sectionId = sectionId;
+    }
+
+    public String getSignature() {
+        return signature;
+    }
+
+    public void setSignature(String signature) {
+        this.signature = signature;
     }
 }

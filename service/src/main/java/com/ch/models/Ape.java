@@ -6,8 +6,10 @@ import java.io.Serializable;
 
 public class Ape implements Serializable {
 
+    private int id;
     @JsonProperty("type")
     private String name;
+    private String img;
     private String title;
     @JsonProperty("myAnswer")
     private String content;
@@ -17,12 +19,22 @@ public class Ape implements Serializable {
     public Ape() {
     }
 
-    public Ape(String name, String title, String content, String time, String answerNum) {
+    public Ape(int id, String name, String img, String title, String content, String time, String answerNum) {
+        this.id = id;
         this.name = name;
+        this.img = img;
         this.title = title;
         this.content = content;
         this.time = time;
         this.answerNum = answerNum;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -31,6 +43,14 @@ public class Ape implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public String getTitle() {

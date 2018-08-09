@@ -3,27 +3,47 @@ package com.ch.models;
 import java.io.Serializable;
 
 public class PersonCourse implements Serializable {
+    private int id;
     private String time;
     private String img;
     private String name;
     private String learned;
     private String learnTime;
     private String learnProgress;
+    private int section;
     private String notesNum;
     private String questionNum;
 
     public PersonCourse() {
     }
 
-    public PersonCourse(String time, String img, String name, String learned, String learnTime, String learnProgress, String notesNum, String questionNum) {
+    public PersonCourse(int id, String time, String img, String name, String learned, String learnTime, String learnProgress, int section, String notesNum, String questionNum) {
+        this.id = id;
         this.time = time;
         this.img = img;
         this.name = name;
         this.learned = learned;
         this.learnTime = learnTime;
         this.learnProgress = learnProgress;
+        this.section = section;
         this.notesNum = notesNum;
         this.questionNum = questionNum;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getSection() {
+        return section;
+    }
+
+    public void setSection(int section) {
+        this.section = section;
     }
 
     public String getTime() {

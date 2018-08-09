@@ -4,14 +4,21 @@ import java.io.Serializable;
 
 public class Result implements Serializable {
     private boolean success;
-    private String message;
+    private int root;
+    private String picture;
 
     public Result() {
     }
 
-    public Result(boolean success, String message) {
+    public Result(boolean success, String picture) {
         this.success = success;
-        this.message = message;
+        this.picture = picture;
+    }
+
+    public Result(boolean success, int root, String picture) {
+        this.success = success;
+        this.root = root;
+        this.picture = picture;
     }
 
     public boolean isSuccess() {
@@ -22,11 +29,19 @@ public class Result implements Serializable {
         this.success = success;
     }
 
-    public String getMessage() {
-        return message;
+    public int getRoot() {
+        return root;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setRoot(int root) {
+        this.root = root;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 }

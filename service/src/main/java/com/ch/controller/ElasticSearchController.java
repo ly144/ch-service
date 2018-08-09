@@ -1,8 +1,11 @@
 package com.ch.controller;
 
+import com.ch.dao.ApeRepository;
 import com.ch.dao.CourseRepository;
 import com.ch.dao.FindMapper;
+import com.ch.models.Community;
 import com.ch.models.Course;
+import com.ch.service.CommunityService;
 import com.ch.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,23 +17,54 @@ import java.util.*;
 @RequestMapping("/es")
 public class ElasticSearchController {
 
-    @Autowired
     CourseService courseService;
-
-    @Autowired
     FindMapper findMapper;
+    CourseRepository courseRepository;
+    ApeRepository apeRepository;
+    CommunityService communityService;
 
     @Autowired
-    CourseRepository courseRepository;
+    public ElasticSearchController(CourseService courseService, FindMapper findMapper, CourseRepository courseRepository, ApeRepository apeRepository, CommunityService communityService) {
+        this.courseService = courseService;
+        this.findMapper = findMapper;
+        this.courseRepository = courseRepository;
+        this.apeRepository = apeRepository;
+        this.communityService = communityService;
+    }
 
-    @RequestMapping("/init")
-    public boolean init() {
+    @RequestMapping("/courseInit")
+    public boolean courseInit() {
         Course[] courses = this.courseService.getCourse();
         for (Course course : courses) {
             System.out.println(course);
             this.courseRepository.save(course);
         }
         return true;
+    }
+
+    @RequestMapping("/communityInit")
+    public boolean communityInit() {
+        Community[] communities = this.communityService.getCommunity();
+        for (Community community : communities) {
+            System.out.println(community);
+            this.apeRepository.save(community);
+        }
+        return true;
+    }
+
+    @PostMapping("/findCommunity")
+    public List<Community> findCommunity(@RequestBody int typeId) {
+        if (typeId == 0) {
+            Iterable<Community> iterable = this.apeRepository.findAll();
+            Iterator<Community> iterator = iterable.iterator();
+            List<Community> list = new ArrayList<Community>();
+            while (iterator.hasNext()) {
+                list.add(iterator.next());
+            }
+            return list;
+        } else {
+            return this.apeRepository.findByTypeId(typeId);
+        }
     }
 
     @PostMapping("/findCourse")

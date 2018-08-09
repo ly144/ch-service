@@ -1,11 +1,7 @@
 package com.ch.service.serviceImpl;
 
-import com.ch.models.User;
+import com.ch.models.*;
 import com.ch.dao.UserMapper;
-import com.ch.models.Ape;
-import com.ch.models.Notes;
-import com.ch.models.Person;
-import com.ch.models.PersonCourse;
 import com.ch.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +15,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public User judgeLogin(String name) {
         return this.userMapper.getUserByName(name);
+    }
+
+    @Override
+    public Result getPicture(int id) {
+        return this.userMapper.getPicture(id);
     }
 
     @Override
@@ -52,7 +53,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int setPerson(Person person) {
-        return this.userMapper.setPerson(person);
+    public int changePerson(Person person) {
+        return this.userMapper.changePerson(person);
     }
 }

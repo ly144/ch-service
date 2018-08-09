@@ -1,6 +1,7 @@
 package com.ch.service.serviceImpl;
 
 import com.ch.dao.BackstageMapper;
+import com.ch.dao.CourseRepository;
 import com.ch.models.Chapter;
 import com.ch.models.Course;
 import com.ch.models.CourseChapter;
@@ -14,6 +15,8 @@ public class BackstageServiceImpl implements BackstageService {
 
     @Autowired
     BackstageMapper backstageMapper;
+    @Autowired
+    CourseRepository courseRepository;
 
     /**
      * 获取讲师课程
@@ -50,6 +53,7 @@ public class BackstageServiceImpl implements BackstageService {
      */
     @Override
     public int setCourse(Course course) {
+        this.courseRepository.save(course);
         return this.backstageMapper.setCourse(course);
     }
 
@@ -85,6 +89,7 @@ public class BackstageServiceImpl implements BackstageService {
             this.backstageMapper.deleteCourseSection(c);
         }
         this.backstageMapper.deleteCourseChapter(id);
+        this.courseRepository.delete(id);
         return this.backstageMapper.deleteCourse(id);
     }
 
@@ -111,6 +116,7 @@ public class BackstageServiceImpl implements BackstageService {
 
     @Override
     public int changeCourse(Course course) {
+        this.courseRepository.save(course);
         return this.backstageMapper.changeCourse(course);
     }
 

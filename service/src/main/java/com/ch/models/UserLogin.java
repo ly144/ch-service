@@ -3,10 +3,10 @@ package com.ch.models;
 import java.io.Serializable;
 
 public class UserLogin implements Serializable {
-    String username;
-    String password;
-    String phone;
-    String code;
+    private String username;
+    private String password;
+    private String phone;
+    private String code;
 
     public String getPhone() {
         return phone;

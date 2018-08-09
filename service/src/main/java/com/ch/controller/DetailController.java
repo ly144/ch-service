@@ -13,12 +13,6 @@ public class DetailController {
     @Autowired
     DetailService detailService;
 
-    @PostMapping("/getDetailNoLogin")
-    public Detail getDetailNoLogin(@RequestBody int courseId){
-        System.out.println(courseId);
-        return detailService.getDetailNoLogin(courseId);
-    }
-
     // 获取课程详细页面的课程信息，教师信息，学生信息
     @PostMapping("/getCourse")
     public Detail getDetail(@RequestBody int[] passId){
@@ -32,8 +26,8 @@ public class DetailController {
      * @return
      */
     @PostMapping("/getChapterSection")
-    public CourseChapter getChapterSection(@RequestBody int id) {
-        return this.detailService.getCourseChapter(id);
+    public CourseChapter getChapterSection(@RequestBody int[] id) {
+        return this.detailService.getCourseChapter(id[0], id[1]);
     }
 
     /**

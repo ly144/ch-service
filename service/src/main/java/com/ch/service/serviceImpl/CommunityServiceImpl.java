@@ -1,5 +1,6 @@
 package com.ch.service.serviceImpl;
 
+import com.ch.dao.ApeRepository;
 import com.ch.dao.CommunityMapper;
 import com.ch.models.Answer;
 import com.ch.models.Community;
@@ -13,6 +14,8 @@ public class CommunityServiceImpl implements CommunityService {
 
     @Autowired
     CommunityMapper communityMapper;
+    @Autowired
+    ApeRepository apeRepository;
 
     // ch-ape猿问页面信息
     @Override
@@ -49,6 +52,7 @@ public class CommunityServiceImpl implements CommunityService {
     // ch-ape-quiz 插入提问信息
     @Override
     public int setCommunity(Community quiz) {
+        this.apeRepository.save(quiz);
         return this.communityMapper.setCommunity(quiz);
     }
 

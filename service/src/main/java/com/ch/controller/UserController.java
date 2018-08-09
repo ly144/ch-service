@@ -6,6 +6,7 @@ import com.ch.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.method.P;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
@@ -15,13 +16,10 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-    @Autowired
-    private SpringMailTest springMailTest;
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+//    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @RequestMapping("")
     public String Learn() {
-        springMailTest.sendTxtMail();
         return "learn-res";
     }
 
@@ -43,6 +41,11 @@ public class UserController {
         }
         System.out.println("false");
         return false;
+    }
+
+    @PostMapping("/getPicture")
+    public Result getPicture(@RequestBody int id) {
+        return this.userService.getPicture(id);
     }
 
     /**
@@ -111,10 +114,15 @@ public class UserController {
         return this.userService.getNotes(id);
     }
 
-    @PostMapping("setPerson")
-    public int setPerson(@RequestBody Person person) {
+    /**
+     * 修改个人信息
+     * @param person
+     * @return
+     */
+    @PostMapping("/changePerson")
+    public int changePerson(@RequestBody Person person) {
         System.out.println(person);
-        return this.userService.setPerson(person);
+        return this.userService.changePerson(person);
     }
 
 }

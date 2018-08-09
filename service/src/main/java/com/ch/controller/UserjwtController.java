@@ -1,7 +1,9 @@
 package com.ch.controller;
 
 import com.aliyuncs.exceptions.ClientException;
+import com.ch.config.SpringMailTest;
 import com.ch.models.User;
+import com.ch.models.UserBind;
 import com.ch.models.UserLogin;
 import com.ch.models.UserResponse;
 import com.ch.service.IUserService;
@@ -28,6 +30,8 @@ public class UserjwtController {
     private JmsMessagingTemplate jmsMessagingTemplate;
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
+    @Autowired
+    private SpringMailTest springMailTest;
 
     /**
      * 用户登录
@@ -51,10 +55,9 @@ public class UserjwtController {
      */
     @PostMapping("/register")
     public String register(@RequestBody UserLogin userLogin) throws AuthenticationException {
-        String code = this.stringRedisTemplate.opsForValue().get(userLogin.getPhone());  // 获取验证码
+        String phoneCode = this.stringRedisTemplate.opsForValue().get(userLogin.getPhone()); // 获取验证码
 //        String code = (String) redisTemplate.boundHashOps("smscode").get(userLogin.getPhone());
-        System.out.println(code);
-        if (userLogin.getCode().equals(code)) {
+        if (phoneCode.equals(userLogin.getCode())) {
             this.stringRedisTemplate.delete(userLogin.getPhone());
             return iUserService.register(userLogin);
         } else {
@@ -79,10 +82,52 @@ public class UserjwtController {
             Map<String, String> map = new HashMap<>();
             map.put("phone", phone);
             map.put("code", smscode);
-            jmsMessagingTemplate.convertAndSend("sms", map);
+            jmsMessagingTemplate.convertAndSend("sms", map); // 消息中间件的发送
             return "true";
         } else {
             return "false";
+        }
+    }
+
+    /**
+     * 发送邮件
+     * @param email
+     * @return
+     */
+    @PostMapping("/sendEmail")
+    public int sendEmail(@RequestBody String email) {
+        return springMailTest.sendTxtMail(email);
+    }
+
+    /**
+     * 判断验证码
+     * @return
+     */
+    @PostMapping("/judgeCode")
+    public int judgeCode(@RequestBody UserBind userBind) {
+        String key = userBind.getKey();
+        String code = userBind.getCode();
+        int id = userBind.getId();
+        System.out.println(key + "," + code + "," + id);
+        String emailCode = this.stringRedisTemplate.opsForValue().get(key);
+        if (emailCode.equals(code)) {
+            this.stringRedisTemplate.delete(key);
+            if ( ( key.substring(key.length()-7 ,key.length()) ).equals("@qq.com") )
+                return this.iUserService.changeEmail(key, id);
+            else
+                return this.iUserService.changePhone(key, id);
+        } else {
+            return 0;
+        }
+    }
+
+    @PostMapping("/changePass")
+    public int changePass(@RequestBody String[] pass) {
+        System.out.println(pass[0] + "," + pass[1] + "," + pass[2] + "," + pass[3]);
+        if (iUserService.login(pass[3], pass[0]) != null) {
+            return this.iUserService.changePass(pass[1], Integer.parseInt(pass[4]));
+        } else {
+            return 0;
         }
     }
 

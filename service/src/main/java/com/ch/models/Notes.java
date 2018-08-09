@@ -6,6 +6,7 @@ public class Notes implements Serializable {
     private int id;
     private int userId; // 用户id
     private int sectionId; // 节id
+    private int courseId;
     private String courseName;
     private int chapter; // 第几章
     private int section; // 第几节
@@ -18,10 +19,11 @@ public class Notes implements Serializable {
     public Notes() {
     }
 
-    public Notes(int id, int userId, int sectionId, String courseName, int chapter, int section, String sectionName, String content, int agreeNum, int gatherNum, String time) {
+    public Notes(int id, int userId, int sectionId, int courseId, String courseName, int chapter, int section, String sectionName, String content, int agreeNum, int gatherNum, String time) {
         this.id = id;
         this.userId = userId;
         this.sectionId = sectionId;
+        this.courseId = courseId;
         this.courseName = courseName;
         this.chapter = chapter;
         this.section = section;
@@ -38,6 +40,7 @@ public class Notes implements Serializable {
                 "id=" + id +
                 ", userId=" + userId +
                 ", sectionId=" + sectionId +
+                ", courseId=" + courseId +
                 ", courseName='" + courseName + '\'' +
                 ", chapter=" + chapter +
                 ", section=" + section +
@@ -71,6 +74,14 @@ public class Notes implements Serializable {
 
     public void setSectionId(int sectionId) {
         this.sectionId = sectionId;
+    }
+
+    public int getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
     }
 
     public String getCourseName() {

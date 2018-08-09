@@ -1,10 +1,7 @@
 package com.ch.dao;
 
 import com.ch.models.*;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -16,8 +13,34 @@ public interface CourseMapper {
     Course[] getCourse();
 
     // 获取课程学习视频
-    @Select("select c.chapter,s.section,s.name,s.video from sections s,chapters c where s.chapterId=c.id and s.id=#{id}")
+    @Select("select c.courseId,c.chapter,s.section,s.name,s.video from sections s,chapters c where s.chapterId=c.id and s.id=#{id}")
     CourseLearn getCourseLearn(int id);
+
+    /**
+     * 查找用户历史记录
+     * @param courseId
+     * @param userId
+     * @return int
+     */
+    @Select("select * from usercourse uc where courseId=#{courseId} and userId=#{userId}")
+    Historical getUserHistorical(@Param("courseId") int courseId, @Param("userId") int userId);
+
+    /**
+     * 若没有历史记录，则插入
+     * @param historical
+     * @return int
+     */
+    @Insert("insert into usercourse(courseId,userId,time,learned,learnTime,learnProgress,notesNum,questionNum,statue,learnedSection,learningHalf,newLearn) " +
+            "values(#{his.courseId},#{his.userId},#{his.time},#{his.learned},#{his.learnTime},#{his.learnProgress},#{his.notesNum},#{his.questionNum},#{his.statue},#{his.learnedSection},#{his.learningHalf},#{his.newLearn})")
+    int setUserHistorical(@Param("his") Historical historical);
+
+    /**
+     * 若有历史记录，则修改
+     * @param historical
+     * @return int
+     */
+    @Update("update usercourse set courseId=#{his.courseId},userId=#{his.userId},time=#{his.time},learned=#{his.learned},learnTime=#{his.learnTime},learnProgress=#{his.learnProgress},notesNum=#{his.notesNum},questionNum=#{his.questionNum},statue=#{his.statue},learnedSection=#{his.learnedSection},learningHalf=#{his.learningHalf},newLearn=#{his.newLearn} where id=#{his.id}")
+    int changeUserHistorical(@Param("his") Historical historical);
 
     // 获取课程节的问题
     @Select("select u.picture img,q.* from question q,user u where q.userId=u.id and q.sectionId=#{id}")

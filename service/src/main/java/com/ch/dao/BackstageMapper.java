@@ -55,7 +55,7 @@ public interface BackstageMapper {
      * @param sections
      * @return
      */
-    @Insert("insert into sections(chapterId,section,name) values (#{sec.chapterId},#{sec.section},#{sec.name})")
+    @Insert("insert into sections(chapterId,section,name,time,video) values (#{sec.chapterId},#{sec.section},#{sec.name},#{sec.time},#{sec.video})")
     int setSection(@Param("sec")Sections sections);
 
     /**
@@ -100,7 +100,7 @@ public interface BackstageMapper {
     @Update("update chapters set name=#{cha.name},summary=#{cha.summary} where id=#{cha.id}")
     int changeChapter(@Param("cha")Chapter chapter);
 
-    @Update("update sections set name=#{sec.name} where id=#{sec.id}")
+    @Update("update sections set name=#{sec.name},video=#{sec.video} where id=#{sec.id}")
     int changeSection(@Param("sec")Sections section);
 
 }

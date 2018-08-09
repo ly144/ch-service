@@ -3,6 +3,7 @@ package com.ch.models;
 import java.io.Serializable;
 
 public class Person implements Serializable {
+    private int id; // 用户id
     private String name; // 用户昵称
     private String picture; // 用户头像
     private String sex; // 用户性别
@@ -17,7 +18,8 @@ public class Person implements Serializable {
     public Person() {
     }
 
-    public Person(String name, String picture, String sex, String signature, int learnTime, int attentionNum, String phone, String email, String job, String address) {
+    public Person(int id, String name, String picture, String sex, String signature, int learnTime, int attentionNum, String phone, String email, String job, String address) {
+        this.id = id;
         this.name = name;
         this.picture = picture;
         this.sex = sex;
@@ -33,7 +35,8 @@ public class Person implements Serializable {
     @Override
     public String toString() {
         return "Person{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", picture='" + picture + '\'' +
                 ", sex='" + sex + '\'' +
                 ", signature='" + signature + '\'' +
@@ -44,6 +47,14 @@ public class Person implements Serializable {
                 ", job='" + job + '\'' +
                 ", address='" + address + '\'' +
                 '}';
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

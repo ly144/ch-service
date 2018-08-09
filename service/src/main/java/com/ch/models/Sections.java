@@ -8,26 +8,32 @@ public class Sections implements Serializable {
     private int section;    //第几节
     private String name;   // 节名
     private String time;            // 节时长
-    private String learnedSection;  // 已经学习记录
+    private String video; // 视频
     private int learnedSections;  // 已经学习（前台）
-    private String learningHalf;    //学至一半记录
     private int learningHalfs;    // 学至一半（前台）
     private int newLearn;       // 最新学习
 
     public Sections() {
     }
 
-    public Sections(int id, int chapterId, int section, String name, String time, String learnedSection, int learnedSections, String learningHalf, int learningHalfs, int newLearn) {
+    public Sections(int id, int chapterId, int section, String name, String time, String video, int learnedSections, int learningHalfs, int newLearn) {
         this.id = id;
         this.chapterId = chapterId;
         this.section = section;
         this.name = name;
         this.time = time;
-        this.learnedSection = learnedSection;
+        this.video = video;
         this.learnedSections = learnedSections;
-        this.learningHalf = learningHalf;
         this.learningHalfs = learningHalfs;
         this.newLearn = newLearn;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getChapterId() {
@@ -62,20 +68,12 @@ public class Sections implements Serializable {
         this.time = time;
     }
 
-    public int getId() {
-        return id;
+    public String getVideo() {
+        return video;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getLearnedSection() {
-        return learnedSection;
-    }
-
-    public void setLearnedSection(String learnedSection) {
-        this.learnedSection = learnedSection;
+    public void setVideo(String video) {
+        this.video = video;
     }
 
     public int getLearnedSections() {
@@ -84,14 +82,6 @@ public class Sections implements Serializable {
 
     public void setLearnedSections(int learnedSections) {
         this.learnedSections = learnedSections;
-    }
-
-    public String getLearningHalf() {
-        return learningHalf;
-    }
-
-    public void setLearningHalf(String learningHalf) {
-        this.learningHalf = learningHalf;
     }
 
     public int getLearningHalfs() {

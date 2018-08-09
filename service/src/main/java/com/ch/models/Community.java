@@ -1,9 +1,15 @@
 package com.ch.models;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Document;
+
 import java.io.Serializable;
 import java.util.Arrays;
 
+@Document(indexName = "sleep", type = "community")
 public class Community implements Serializable {
+
+    @Id
     private int id;  //获取提问者id
     private String img; // 分类头像
     private String classify; // 类型

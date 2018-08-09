@@ -9,6 +9,13 @@ public interface CourseService {
     // 获取课程学习视频
     CourseLearn getCourseLearn(int id);
 
+    /**
+     * 历史记录
+     * @param historical
+     * @return
+     */
+    int setHistorical(Historical historical);
+
     // 获取课程节问答
     Question[] getSectionQuestion(int id);
 
