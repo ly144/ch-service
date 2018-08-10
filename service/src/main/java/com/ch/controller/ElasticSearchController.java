@@ -1,6 +1,7 @@
 package com.ch.controller;
 
 import com.ch.dao.ApeRepository;
+import com.ch.dao.BackstageMapper;
 import com.ch.dao.CourseRepository;
 import com.ch.dao.FindMapper;
 import com.ch.models.Community;
@@ -31,6 +32,13 @@ public class ElasticSearchController {
         this.apeRepository = apeRepository;
         this.communityService = communityService;
     }
+
+//    @RequestMapping("/saveCourse")
+//    public boolean saveCourse() {
+//        Course course = this.backstageMapper.getCourseOfName("11111");
+//        this.courseRepository.save(course);
+//        return true;
+//    }
 
     @RequestMapping("/courseInit")
     public boolean courseInit() {

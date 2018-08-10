@@ -53,6 +53,8 @@ public class IUserServiceImpl implements IUserService {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder(); // 使用BCrypt加密算法对密码加密
         userLogin.setPassword(passwordEncoder.encode(userLogin.getPassword())); // 给密码加密
         System.out.println(userLogin.getPassword());
+        userLogin.setPicture("//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png");
+        userLogin.setRoot(0);
         if (userMapper.regis(userLogin) > 0) {
             return "true";
         } else {

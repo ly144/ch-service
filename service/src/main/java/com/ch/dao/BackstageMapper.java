@@ -35,6 +35,14 @@ public interface BackstageMapper {
     Course getCourse(int id);
 
     /**
+     * 根据课程name获取课程
+     * @param name
+     * @return
+     */
+    @Select("select * from course where name=#{name}")
+    Course getCourseOfName(String name);
+
+    /**
      * 插入课程
      * @param course
      * @return

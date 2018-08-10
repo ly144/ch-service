@@ -52,7 +52,7 @@ public class CommunityServiceImpl implements CommunityService {
     // ch-ape-quiz 插入提问信息
     @Override
     public int setCommunity(Community quiz) {
-        this.apeRepository.save(quiz);
+//        this.apeRepository.save(quiz);
         return this.communityMapper.setCommunity(quiz);
     }
 

@@ -53,8 +53,12 @@ public class BackstageServiceImpl implements BackstageService {
      */
     @Override
     public int setCourse(Course course) {
-        this.courseRepository.save(course);
-        return this.backstageMapper.setCourse(course);
+        int top = this.backstageMapper.setCourse(course);
+        if (top > 0) {
+            Course c = this.backstageMapper.getCourseOfName(course.getName());
+            this.courseRepository.save(c);
+        }
+        return top;
     }
 
     /**

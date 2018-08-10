@@ -7,6 +7,24 @@ public class UserLogin implements Serializable {
     private String password;
     private String phone;
     private String code;
+    private String picture;
+    private int root;
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public int getRoot() {
+        return root;
+    }
+
+    public void setRoot(int root) {
+        this.root = root;
+    }
 
     public String getPhone() {
         return phone;
@@ -43,11 +61,13 @@ public class UserLogin implements Serializable {
     public UserLogin() {
     }
 
-    public UserLogin(String username, String password, String phone, String code) {
+    public UserLogin(String username, String password, String phone, String code, String picture, int root) {
         this.username = username;
         this.password = password;
         this.phone = phone;
         this.code = code;
+        this.picture = picture;
+        this.root = root;
     }
 
     @Override
@@ -57,6 +77,8 @@ public class UserLogin implements Serializable {
                 ", password='" + password + '\'' +
                 ", phone='" + phone + '\'' +
                 ", code='" + code + '\'' +
+                ", picture='" + picture + '\'' +
+                ", root=" + root +
                 '}';
     }
 }
