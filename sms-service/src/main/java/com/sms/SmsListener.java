@@ -16,15 +16,15 @@ public class SmsListener {
 
     @JmsListener(destination = "sms")
     public void sendSms(Map<String, String> map) {
-//        try {
+        try {
             System.out.println(map.get("phone"));
             System.out.println(map.get("code"));
-//            SendSmsResponse response = smsUtil.sendSms(map.get("phone"), map.get("code"));
-//            System.out.println("code:" + response.getCode());
-//            System.out.println("message:" + response.getMessage());
-//        } catch (ClientException e) {
-//            e.printStackTrace();
-//        }
+            SendSmsResponse response = smsUtil.sendSms(map.get("phone"), map.get("code"));
+            System.out.println("code:" + response.getCode());
+            System.out.println("message:" + response.getMessage());
+        } catch (ClientException e) {
+            e.printStackTrace();
+        }
     }
 
 }
